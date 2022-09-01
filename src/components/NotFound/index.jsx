@@ -6,7 +6,7 @@ export default function NotFound() {
             <S.NotFoundText>
                 Personagem não encontrado... 
             </S.NotFoundText>
-            <S.NotFoundGIF src="/morty_confused.gif"></S.NotFoundGIF>
+            <S.NotFoundGIF src="src/assets/morty_confused.gif"></S.NotFoundGIF>
         </S.NotFoundContainer>
     );
   }
