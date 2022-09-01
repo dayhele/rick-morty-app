@@ -17,8 +17,18 @@ export const SearchBar = styled.input`
   font-size: 14px;
 `;
 
-export const SearchButton = styled.button`
-  width: 100px;
-  height: 38px;
+export const SearchButton = styled.button` 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 16px;
+  padding: 20px;
+  border: 2px solid #565656;
+  margin: 0 12px 0 0;
+  border-radius: 8px;
+  background: #FBFEA2;
   cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
 `;

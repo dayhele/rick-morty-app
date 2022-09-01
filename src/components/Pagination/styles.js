@@ -11,10 +11,9 @@ export const PaginationButtons = styled.ul `
     list-style: none;
     flex-direction: row;
     display: flex;
-    padding: 0;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
-    
+    padding: 0;
 `;
 
 export const Button = styled.button `  
@@ -24,8 +23,9 @@ export const Button = styled.button `
   width: 76px;
   height: 56px;
   border: 2px solid #565656;
-  border-radius: 12px;
-  background: #c0f1e5;
+  margin: 0 12px 0 0;
+  border-radius: 8px;
+  background: #FBFEA2;
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
