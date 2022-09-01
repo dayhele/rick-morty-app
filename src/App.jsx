@@ -36,6 +36,8 @@ function App() {
         setError(false);
         setCharacters(data.results);
         setinfo(data.info);
+        localStorage.setItem("myResponse", JSON.stringify(data));
+        // salva o resultado da requisição no localStorage
       })
       .catch((error) => setError(true));
   };
@@ -64,7 +66,18 @@ function App() {
   };
 
   useEffect(() => {
-    fetchCharacters(url);
+
+    const characters = JSON.parse(localStorage.getItem("myResponse"));
+
+    //é verificado se já foi realizado uma requisição e se já ela foi armazadenada no localStorage
+
+    if (characters) {
+      setError(false);
+      setCharacters(characters.results);
+      setinfo(characters.info);
+    } else {
+      fetchCharacters(url);
+    }
   }, []);
 
   return (
@@ -85,6 +98,7 @@ function App() {
                 <Card character={item} key={index} />
               ))}
           </S.Container>
+          // caso haja erro na busca é mostrada a página de "não encontrado" 
         )}
         {!error && (
           <Pagination
