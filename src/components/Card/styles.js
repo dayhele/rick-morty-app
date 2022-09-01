@@ -26,7 +26,7 @@ export const Name = styled.h2 `
     text-align: center;
 `;
 
-export const Status = styled.p`
+export const Info = styled.p`
     font-size: 16px;
     text-align: center;
 `;

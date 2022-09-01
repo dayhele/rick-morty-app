@@ -19,8 +19,13 @@ export const Title = styled.h1 `
 export const HeroWrapper = styled.div `
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-evenly;
+`;
+
+export const PaginationContainer = styled.div `
+  display: flex;
+  flex-direction: row;
 `;
 
