@@ -9,13 +9,13 @@ import Card from "./components/Card";
 import Pagination from "./components/Pagination";
 import SearchInput from "./components/Search";
 import Footer from "./components/Footer";
-
-
+import NotFound from "./components/NotFound";
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const [info, setinfo] = useState({});
   const [searchValue, setSearchValue] = useState("");
+  const [error, setError] = useState(false);
 
   const getSearchValue = (value) => {
     value = value.toLowerCase();
@@ -26,22 +26,34 @@ function App() {
 
   const fetchCharacters = (url) => {
     fetch(url)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
       .then((data) => {
+        setError(false);
         setCharacters(data.results);
         setinfo(data.info);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(true));
   };
 
   const fetchFilteredCharacters = () => {
     fetch(`${url}/?name=${searchValue}`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
       .then((data) => {
+        setError(false);
         setCharacters(data.results);
         setinfo(data.info);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => setError(true));
   };
 
   const onPrevious = () => {
@@ -50,8 +62,6 @@ function App() {
   const onNext = () => {
     fetchCharacters(info.next);
   };
-
-  //utilizando o useEffect o componente irá renderizar uma unica vez
 
   useEffect(() => {
     fetchCharacters(url);
@@ -62,18 +72,28 @@ function App() {
       <GlobalStyle />
       <Header />
       <Hero>
-        <SearchInput getSearchValue={getSearchValue} doSearch={fetchFilteredCharacters} />
-        <S.Container>
-          {characters.map((item, index) => (
-            <Card character={item} key={index} />
-          ))}
-        </S.Container>
-        <Pagination
-          prev={info.prev}
-          next={info.next}
-          onPrevious={onPrevious}
-          onNext={onNext}
+        <SearchInput
+          getSearchValue={getSearchValue}
+          doSearch={fetchFilteredCharacters}
         />
+        {error ? (
+          <NotFound />
+        ) : (
+          <S.Container>
+            {characters.length > 0 &&
+              characters?.map((item, index) => (
+                <Card character={item} key={index} />
+              ))}
+          </S.Container>
+        )}
+        {!error && (
+          <Pagination
+            prev={info.prev}
+            next={info.next}
+            onPrevious={onPrevious}
+            onNext={onNext}
+          />
+        )}
       </Hero>
       <Footer />
     </>

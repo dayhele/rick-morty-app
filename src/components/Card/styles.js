@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-  width: 280px;
+  width: 230px;
   height: 380px;
   border: 2px solid #3b3b3b;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 24px 12px;
   margin: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: #fefefe;
 `;
 
 export const Image = styled.img`

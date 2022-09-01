@@ -29,4 +29,9 @@ export const Button = styled.button `
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
+
+  &:hover {
+    background: #eae875;
+    transition: all 0.12s linear;
+  }
 `;

@@ -3,18 +3,19 @@ import styled from "styled-components";
 export const Search = styled.div `
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 450px;
+    margin-bottom: 38px;
+    align-self: center;
 `;
 
 export const SearchBar = styled.input`
   width: 300px;
-  height: 16px;
+  height: 44px;
   padding: 12px;
   border: 2px solid #565656;
   border-radius: 8px;
   font-family: "Inter", sans-serif;
   font-size: 14px;
+  margin-right: 18px;
 `;
 
 export const SearchButton = styled.button` 
@@ -31,4 +32,9 @@ export const SearchButton = styled.button`
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
+
+  &:hover {
+    background: #eae875;
+    transition: all 0.12s linear;
+  }
 `;
